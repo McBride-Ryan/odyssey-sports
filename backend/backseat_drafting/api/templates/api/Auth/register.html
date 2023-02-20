@@ -1,0 +1,76 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+
+<div class="relative flex flex-1 flex-col items-center justify-center pt-12 pb-16">
+    <h1 class="uppercase">welcome</h1>
+    <div>
+        <style>
+            h5 {
+                color: red
+            }
+        </style>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+    </div>
+    <form method="post" action="" class="w-full max-w-sm">
+        {% csrf_token %}
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">First Name:</label>
+            <input type="text" name="first_name" placeholder="First Name"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">Last Name:</label>
+            <input type="text" name="last_name" placeholder="Last Name"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">Username:</label>
+            <input type="text" name="username" placeholder="Username"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">Email:</label>
+            <input type="email" name="email" placeholder="Email"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">Password:</label>
+            <input type="password" name="password" placeholder="Password"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+        <div class="mb-2">
+
+            <label class="block text-sm font-semibold leading-6 text-gray-900">Confirm Password:</label>
+            <input type="password" name="password2" placeholder="Confirm Password"
+                class="mt-2 appearance-none text-slate-900 bg-white rounded-md block w-full px-3 h-10 shadow-sm sm:text-sm focus:outline-none placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500 ring-1 ring-slate-200"
+                required="">
+        </div>
+
+        <div class="mb-2">
+            <button type="submit"
+                class="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-slate-900 text-white hover:bg-slate-700 w-full">Register</button>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock content %}
+<!-- <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password2" placeholder="Confirm Password" required> -->

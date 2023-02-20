@@ -1,0 +1,46 @@
+{% include 'layout/main.html' %}
+
+{% block content %}
+<h1>DETAILS</h1>
+{% if request.user == article.user %}
+
+<div style="border: solid blue 2px">
+    <a href="{% url 'updateArticle' article.id %}">Edit</a>
+    <a href="{% url 'deleteArticle' article.id %}">Delete</a>
+</div>
+{% endif %}
+
+<div>{{article.category}}</div>
+<div>
+    Title: {{article.title}}
+</div>
+<hr>
+<div>
+    Body: {{article.body}}
+</div>
+<div>
+    {% if request.user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>Comments:</label>
+        <input type="text" name="body" placeholder="Comments...">
+
+    </form>
+
+    {% else %}
+    <p><a href="{% url 'register' %}">Register</a> or <a href="{% url 'login' %}">login</a> to leave a comment</p>
+    {% endif %}
+    {% for comment in comments %}
+    <div>
+        <br><br>
+        <span><b>@{{comment.user}}</b></span>
+        <span>-- {{comment.body}}</span>
+        <span>-- {{comment.created | timesince}}</span>
+
+    </div>
+    {% endfor %}
+</div>
+<a href="/">
+    <h4>Go Back</h4>
+</a>
+{% endblock %}

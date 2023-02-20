@@ -1,0 +1,55 @@
+{% extends 'layout/main.html' %}
+
+{% block content %}
+
+<main class="max-w-6xl mx-auto mt-6 lg:mt-10 space-y-6">
+    <div>
+        <pre style="max-width: 90%">{{art_json}}</pre>
+        <!-- {% for art in art_json %}
+        {{art}}
+        {% endfor %} -->
+        <hr>
+        <hr>
+        {% if articles.count > 1 %}
+        <div class="lg:grid lg:grid-cols-6">
+            <!-- <h1 style="background-color: lightblue">SLICE: {{articles|slice:'0,2'}}</h1>
+            {% for article in articles %}
+
+            <h1>LOOP: {{article}}</h1>
+            {% endfor %} -->
+        </div>
+        {% endif %}
+        {% if request.user == article.user %}
+        <a class="text-blue-600 hover:text-blue-400" href="{% url 'createArticle' %}">Create Room</a>
+        {% endif %}
+
+        {% for article in articles %}
+
+        <div style="border: solid red 2px; margin-bottom: 5px;">
+            {% if request.user == article.user %}
+
+            <div style="border: solid blue 2px">
+                <a href="{% url 'updateArticle' article.id %}">Edit</a>
+                <a href="{% url 'deleteArticle' article.id %}">Delete</a>
+            </div>
+            {% endif %}
+
+            <div><b>{{article.category}}</b></div>
+            <div>{{article.user.first_name}} {{article.user.last_name}}</div>
+            <div>{{article.body}}</div>
+            <span>{{article.id}} --> {{article.title}}</span>
+            <a href="{% url 'details' article.id %}">
+                <h4>See Details</h4>
+            </a>
+
+        </div>
+
+        {% endfor %}
+    </div>
+
+</main>
+
+
+
+
+{% endblock %}

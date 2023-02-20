@@ -1,0 +1,56 @@
+<nav style="background-color: #1A1A1A; color: #F7F7F4"
+    class="w-full grid md:justify-items-stretch lg:grid-cols-3 lg:items-center py-4 px-16 content-center inline-grid">
+    <div class="lg:flex hidden">
+        <div class="relative justify-self-start lg:inline-grid items-center rounded-md py-2">
+            <div class="flex inline-flex absolute">
+                <button>
+                    <svg class="z-50 hover:cursor-pointer fill-current w-5 text-gray-500 ml-2 pr-1 "
+                        viewBox="0 0 24 24">
+                        <path class="heroicon-ui"
+                            d="M16.32 14.9l5.39 5.4a1 1 0 01-1.42 1.4l-5.38-5.38a8 8 0 111.41-1.41zM10 16a6 6 0 100-12 6 6 0 000 12z" />
+                    </svg>
+                </button>
+                <form method="get" action="{% url 'home' %}">
+                    <input type="text" name="search" placeholder="Search Articles"
+                        class=" pl-3 text-black rounded-md p-1" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="md:mt-0 grid justify-self-center inline-grid">
+        <a href="/">
+            <h1 class="text-4xl text-white">Backseat Drafting</h1>
+        </a>
+    </div>
+
+    <div class="md:mt-0 grid items-center justify-self-end lg:grid hidden">
+        <span>
+            {% if request.user.is_authenticated %}
+            <span class="px-1 inline text-xs text-white font-bold uppercase hover:underline cursor-pointer ">Welcome
+                Back,
+                {{request.user.username}}!</span>
+            <span class="text-white">|</span>
+            <a href="{% url 'logout' %}"
+                class="px-1 inline text-xs text-white font-bold uppercase hover:underline ">Logout</a>
+
+            {% else %}
+            <a href="{% url 'register' %}" class="px-1 inline text-xs text-white font-bold uppercase hover:underline ">
+                Register
+            </a>
+            <span class="text-white">|</span>
+            <a href="{% url 'login' %}" class="px-1 inline text-xs text-white font-bold uppercase hover:underline ">
+                Login
+            </a>
+            {% endif %}
+    </div>
+</nav>
+
+<!-- SPORTS STATS SECTION -->
+<section style="background-color: #1A1A1A; color: #F7F7F4"
+    class="border-t-2 border-black py-3 md:flex md:justify-center md:items-center px-16 ">
+    <a href="{% url 'statsQB' %}" class="hover:text-gray-500 px-2">Quarterbacks</a>
+    <a href="{% url 'statsRB' %}" class="hover:text-gray-500 px-2">Running Backs</a>
+    <a href="{% url 'statsWR' %}" class="hover:text-gray-500 px-2">Wide Receivers</a>
+    <a href="{% url 'statsTE' %}" class="hover:text-gray-500 px-2">Tight Ends</a>
+</section>
