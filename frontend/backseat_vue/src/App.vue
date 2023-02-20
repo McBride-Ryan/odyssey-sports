@@ -26,28 +26,27 @@ export default {
     </div>
 
     <div class="md:mt-0 grid justify-self-center inline-grid">
-      <router-link to="/">
+      <a href="/">
         <h1 class="text-4xl text-white">Django-Vue</h1>
-      </router-link>
+      </a>
     </div>
-    <div class="md:mt-0 grid items-center justify-self-end lg:grid">
-      <div class=" top-0 right-0 px-6 py-4 sm:block">
-
+    <div class="md:mt-0 grid items-center justify-self-end lg:grid hidden">
+      <div class="hidden top-0 right-0 px-6 py-4 sm:block">
         <div>
-          <router-link to="/login" class="text-sm text-white underline">Log in</router-link>
+          <router-link to="/login" class="px-2 text-sm text-white hover:underline">Log in</router-link>
           <span class="text-white">|</span>
-          <router-link to="/register" class="ml-4 text-sm text-white underline">Register</router-link>
+          <router-link to="/register" class="px-2 text-sm text-white hover:underline">Register</router-link>
         </div>
       </div>
     </div>
   </nav>
 
 
+  <!-- <FantasyFootball /> -->
 
   <router-link to="/about" class="text-blue-500">
     <span>About</span>
   </router-link>
-
 
 
   <section>
